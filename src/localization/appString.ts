@@ -1,3 +1,3 @@
 export const APP_STRING = {
-  STORE_UP: 'RNBoilerPlate',
+  REACT_NATIVE: 'REACT_NATIVE',
 };
