@@ -4,10 +4,20 @@ import { movieApiSlice } from '@/src/service/query/rtkQuery';
 import { apiErrorMiddleware } from '@/src/store/apiErrorMiddleware';
 import shoppingCartSlice from '@/src/features/shoppingCart/shoppingCartSlice';
 
-const logger: Middleware = (store) => (next) => (action) => {
-  console.log('dispatching', action);
+const logger: Middleware = (store) => (next) => (action: any) => {
+  const isShoppingCartAction = action.type.startsWith('shoppingCart/');
+
+  if (isShoppingCartAction) {
+    console.log('previous shoppingCart state', store.getState().shoppingCart);
+    console.log('dispatching', action);
+  }
+
   let result = next(action);
-  console.log('next state', store.getState());
+
+  if (isShoppingCartAction) {
+    console.log('next shoppingCart state', store.getState().shoppingCart);
+  }
+
   return result;
 };
 
