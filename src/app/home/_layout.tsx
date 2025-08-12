@@ -6,14 +6,12 @@ import { useLocalization } from '@/src/hooks/useLocalization';
 
 const HomeScreen = () => {
   const localization = useLocalization();
-  const [fetchNowPlayingMovie, { data, isFetching }] =
+  const [fetchNowPlayingMovie, { data = [], isFetching }] =
     useLazyGetNowPlayingMovieQuery();
 
   useEffect(() => {
     fetchNowPlayingMovie();
   }, []);
-
-  console.log(data, 'hi');
 
   if (isFetching) {
     return <ActivityIndicator />;
@@ -23,7 +21,9 @@ const HomeScreen = () => {
     <AppBar title={'Home'}>
       <ScrollView>
         <Text>Welcome to {localization.REACT_NATIVE()} </Text>
-        <Text>{JSON.stringify(data, null, ' ')}</Text>
+        {data.map((item) => (
+          <Text key={item.id}>{item.title}</Text>
+        ))}
       </ScrollView>
     </AppBar>
   );

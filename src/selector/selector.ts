@@ -1,4 +1,4 @@
-import { createSelector } from 'reselect';
+import { createSelector } from '@reduxjs/toolkit';
 import { movieApi } from '@/src/service/query/rtkQuery';
 
 const selectGlobalLoading = createSelector(
@@ -13,4 +13,5 @@ const selectGlobalLoading = createSelector(
     return isFetchingQueries || isFetchingMutations;
   }
 );
+
 export { selectGlobalLoading };
