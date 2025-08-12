@@ -1,29 +1,44 @@
-import { ActivityIndicator, ScrollView, Text } from 'react-native';
-import { useLazyGetNowPlayingMovieQuery } from '@/src/service/query/rtkQuery';
-import { useEffect } from 'react';
+import {
+  ActivityIndicator,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { useGetNowPlayingMovieQuery } from '@/src/service/query/rtkQuery';
 import AppBar from '@/src/components/base/appbar/AppBar';
-import { useLocalization } from '@/src/hooks/useLocalization';
+import styles from './home.style';
 
 const HomeScreen = () => {
-  const localization = useLocalization();
-  const [fetchNowPlayingMovie, { data = [], isFetching }] =
-    useLazyGetNowPlayingMovieQuery();
-
-  useEffect(() => {
-    fetchNowPlayingMovie();
-  }, []);
-
-  if (isFetching) {
-    return <ActivityIndicator />;
-  }
+  const { data = [], isFetching } = useGetNowPlayingMovieQuery();
 
   return (
     <AppBar title={'Home'}>
-      <ScrollView>
-        <Text>Welcome to {localization.REACT_NATIVE()} </Text>
-        {data.map((item) => (
-          <Text key={item.id}>{item.title}</Text>
-        ))}
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollViewContent}
+      >
+        <Text style={styles.welcomeText}>Now Playing</Text>
+        {isFetching ? (
+          <ActivityIndicator />
+        ) : (
+          data.map((item) => (
+            <View key={item.id} style={styles.listItem}>
+              <Text style={styles.itemTitle} numberOfLines={2}>
+                {item.title}
+              </Text>
+              <TouchableOpacity
+                style={styles.priceButton}
+                onPress={() => {
+                  // Handle button press here
+                  console.log('Button pressed for:', item.title);
+                }}
+              >
+                <Text style={styles.priceButtonText}>$10</Text>
+              </TouchableOpacity>
+            </View>
+          ))
+        )}
       </ScrollView>
     </AppBar>
   );

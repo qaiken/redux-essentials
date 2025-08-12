@@ -1,5 +1,3 @@
-import { getDynamicPaddingOrMargin } from '@/src/config/dynamicDimension';
-import { MD2Colors } from 'react-native-paper';
 import { appColors } from '@/src/constants/appColors';
 
 export const defaultDimension = {
@@ -26,11 +24,6 @@ export const defaultFontSize = {
   text_20: 20,
 } as const;
 
-export const defaultContainerStyle = {
-  paddingHorizontal: getDynamicPaddingOrMargin(defaultDimension.padding),
-  backgroundColor: MD2Colors.white,
-};
-
 export const themeMode = {
   light: 'light',
   dark: 'dark',
@@ -41,6 +34,7 @@ export const defaultBottomNavIcon = {
   padding: 7,
   backgroundColor: appColors.light.primaryColor,
 };
+
 export const Fonts = {
   regular: 'Inter_400Regular',
   medium: 'Inter_500Medium',

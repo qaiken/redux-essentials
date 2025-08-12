@@ -1,56 +1,29 @@
-import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+// Redux by itself is a plain JS library and can work with any UI layer
+// react-redux library is the glue used to connect react and redux
 import { Provider } from 'react-redux';
-import { I18nextProvider } from 'react-i18next';
 
-import { useColorScheme } from '@/src/hooks/useColorScheme';
-import configureAppStore from '@/src/store/store';
-import { i18nLocale } from '@/src/localization/i18nLocale';
-import { PaperProvider } from 'react-native-paper';
-import { dark, light } from '@/src/config/theme';
-import * as Font from '@expo-google-fonts/inter';
-import NetworkMonitor from '@/src/components/network-monitor/NetworkMonitor';
+import store from '@/src/store/store';
 import CentralLoading from '@/src/components/base/loading/CentralLoading';
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const store = configureAppStore();
-  const [loaded] = useFonts({
-    Inter_400Regular: Font.Inter_400Regular,
-    Inter_600SemiBold: Font.Inter_600SemiBold,
-    Inter_500Medium: Font.Inter_500Medium,
-    Inter_700Bold: Font.Inter_700Bold,
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-
   return (
+    // Step 3: Provide the store to the entire application ///////////////////////////////
+
+    // Uses React's Context API internally to make the Redux store
+    // accessible to all of the React components in our application
+
+    // Should not import store directly into other files,
+    // may cause circular import issues
     <Provider store={store}>
-      <PaperProvider theme={colorScheme === 'dark' ? dark : light}>
-        <StatusBar style="auto" />
-        <I18nextProvider i18n={i18nLocale}>
-          <Stack screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="index" />
-            <Stack.Screen name="home" />
-            <Stack.Screen name="+not-found" />
-          </Stack>
-          <NetworkMonitor />
-          <CentralLoading />
-        </I18nextProvider>
-      </PaperProvider>
+      <StatusBar style="auto" />
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="home" />
+        <Stack.Screen name="+not-found" />
+      </Stack>
+      <CentralLoading />
     </Provider>
   );
 }

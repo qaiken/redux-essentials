@@ -19,7 +19,7 @@ const AppBar: React.FC<CustomAppBarProps> = ({
   children,
 }) => {
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       {/* AppBar */}
       <Appbar.Header style={styles.header}>
         {/* Back Button (Optional) */}

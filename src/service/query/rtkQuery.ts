@@ -4,7 +4,7 @@ import {
   BaseModel,
   MovieItem,
   SingInSignUpResponse,
-} from '@/src/types/ApiResponse';
+} from '@/src/service/query/types/ApiResponse';
 import axiosBaseQuery from '@/src/service/query/baseQuery';
 
 export const movieApi = createApi({
@@ -33,4 +33,5 @@ export const movieApi = createApi({
   }),
 });
 
-export const { useLazyGetNowPlayingMovieQuery } = movieApi;
+export const { useGetNowPlayingMovieQuery, useLazyGetNowPlayingMovieQuery } =
+  movieApi;

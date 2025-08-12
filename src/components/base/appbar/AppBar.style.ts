@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   childContainer: {
+    flex: 1,
     padding: 10,
     backgroundColor: appColors.white,
   },
