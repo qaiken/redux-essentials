@@ -1,8 +1,8 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { movieApi } from '@/src/service/query/rtkQuery';
+import { movieApiSlice } from '@/src/service/query/rtkQuery';
 
 const selectGlobalLoading = createSelector(
-  (state: any) => state[movieApi.reducerPath],
+  (state: any) => state[movieApiSlice.reducerPath],
   (apiState) => {
     const isFetchingQueries = Object.values(apiState.queries).some(
       (query: any) => query?.status === 'pending'

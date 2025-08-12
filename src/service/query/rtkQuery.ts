@@ -7,7 +7,7 @@ import {
 } from '@/src/service/query/types/ApiResponse';
 import axiosBaseQuery from '@/src/service/query/baseQuery';
 
-export const movieApi = createApi({
+export const movieApiSlice = createApi({
   reducerPath: 'home',
   baseQuery: axiosBaseQuery(),
   endpoints: (builder) => ({
@@ -34,4 +34,4 @@ export const movieApi = createApi({
 });
 
 export const { useGetNowPlayingMovieQuery, useLazyGetNowPlayingMovieQuery } =
-  movieApi;
+  movieApiSlice;

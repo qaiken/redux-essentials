@@ -5,7 +5,7 @@ import { StatusBar } from 'expo-status-bar';
 import { Provider } from 'react-redux';
 
 import store from '@/src/store/store';
-import CentralLoading from '@/src/components/base/loading/CentralLoading';
+import CartDrawer from '../features/shoppingCart/CartDrawer';
 
 export default function RootLayout() {
   return (
@@ -23,7 +23,7 @@ export default function RootLayout() {
         <Stack.Screen name="home" />
         <Stack.Screen name="+not-found" />
       </Stack>
-      <CentralLoading />
+      <CartDrawer />
     </Provider>
   );
 }

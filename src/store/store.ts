@@ -1,7 +1,8 @@
-import { configureStore, Middleware } from '@reduxjs/toolkit';
+import { combineSlices, configureStore, Middleware } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
-import { movieApi } from '@/src/service/query/rtkQuery';
+import { movieApiSlice } from '@/src/service/query/rtkQuery';
 import { apiErrorMiddleware } from '@/src/store/apiErrorMiddleware';
+import shoppingCartSlice from '@/src/features/shoppingCart/shoppingCartSlice';
 
 const logger: Middleware = (store) => (next) => (action) => {
   console.log('dispatching', action);
@@ -11,9 +12,7 @@ const logger: Middleware = (store) => (next) => (action) => {
 };
 
 // Object containing the individual "slice reducers"
-const rootReducer = {
-  [movieApi.reducerPath]: movieApi.reducer,
-};
+const rootReducer = combineSlices(movieApiSlice, shoppingCartSlice);
 
 // Step 1: Set Up the Redux Store ///////////////////////////////
 const configureAppStore = () => {
@@ -23,7 +22,7 @@ const configureAppStore = () => {
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat([
-        movieApi.middleware,
+        movieApiSlice.middleware,
         apiErrorMiddleware,
         logger,
       ]),
@@ -35,7 +34,10 @@ const configureAppStore = () => {
 
 const store = configureAppStore();
 
-// Step 2: Add TypeScript Helpers ///////////////////////////////
+// Step 2: Add TypeScript Helpers To:
+// 1. Dispatch Actions ("Trigger Events")
+// 2. Select State ("Read State")
+//  ///////////////////////////////
 
 // Infer the type of `store`
 export type AppStore = typeof store;
