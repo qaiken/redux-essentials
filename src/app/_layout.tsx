@@ -14,7 +14,7 @@ export default function RootLayout() {
     // Uses React's Context API internally to make the Redux store
     // accessible to all of the React components in our application
 
-    // Should not import store directly into other files,
+    // Generally should not import the store directly into other files,
     // may cause circular import issues
     <Provider store={store}>
       <StatusBar style="auto" />
