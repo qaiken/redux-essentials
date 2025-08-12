@@ -8,11 +8,13 @@ type ShoppingCartState = Record<string, { quantity: number }>;
 
 const initialState: ShoppingCartState = {};
 
+// Step 4: Setup a slice ///////////////////////////////
 const shoppingCartSlice = createSlice({
   name: 'shoppingCart',
   initialState,
   // Event listeners / handlers
   reducers: {
+    // Every event listener has a corresponding action creator
     addItem: (state, action: PayloadAction<CartItem>) => {
       const { id } = action.payload;
 

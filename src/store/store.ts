@@ -11,7 +11,7 @@ const logger: Middleware = (store) => (next) => (action) => {
   return result;
 };
 
-// Object containing the individual "slice reducers"
+// Object containing the individual "slices"
 const rootReducer = combineSlices(movieApiSlice, shoppingCartSlice);
 
 // Step 1: Set Up the Redux Store ///////////////////////////////

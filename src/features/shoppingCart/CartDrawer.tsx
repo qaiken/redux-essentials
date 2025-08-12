@@ -5,6 +5,7 @@ import { useAppSelector } from '@/src/store/store';
 import { selectTotalQuantity } from './shoppingCartSlice';
 
 const CartDrawer: React.FC = () => {
+  // Step 5: Read State via Selectors ///////////////////////////////
   const totalQuantity = useAppSelector(selectTotalQuantity);
 
   return (

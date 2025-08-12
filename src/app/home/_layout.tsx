@@ -34,6 +34,7 @@ const HomeScreen = () => {
                 <TouchableOpacity
                   style={styles.priceButton}
                   onPress={() => {
+                    // Step 6: Dispatch Actions / Trigger Events ///////////////
                     dispatch(addItem({ id: item.id }));
                   }}
                 >
