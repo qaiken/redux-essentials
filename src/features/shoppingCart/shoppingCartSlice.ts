@@ -9,13 +9,15 @@ type ShoppingCartState = Record<string, { quantity: number }>;
 const initialState: ShoppingCartState = {};
 
 // Step 4: Setup a slice ///////////////////////////////
+// Slices combine the concepts of state, reducers,
+// actions, action creators, and selectors into a single "feature"
 const shoppingCartSlice = createSlice({
   name: 'shoppingCart',
   initialState,
   // Event listeners / handlers
   reducers: {
     // Every event listener has a corresponding action creator
-    addItem: (state, action: PayloadAction<CartItem>) => {
+    itemAdded: (state, action: PayloadAction<CartItem>) => {
       const { id } = action.payload;
 
       if (state[id]) {
@@ -24,7 +26,9 @@ const shoppingCartSlice = createSlice({
         state[id] = { quantity: 1 };
       }
     },
-    removeItem: (state, action: PayloadAction<CartItem>) => {
+    // Reducer names (and actions) should typically be named past-tense
+    // because we're describing "an event that occurred in the application"
+    itemRemoved: (state, action: PayloadAction<CartItem>) => {
       const { id } = action.payload;
       delete state[id];
     },
@@ -36,8 +40,10 @@ const shoppingCartSlice = createSlice({
   },
 });
 
-// Automatically generated action creators so that the UI can dispatch actions
-export const { addItem, removeItem } = shoppingCartSlice.actions;
+// Automatically generated action creators for each reducer function
+// based on the name of the reducer function and the type of the action
+// Used so that the UI can dispatch actions / trigger events.
+export const { itemAdded, itemRemoved } = shoppingCartSlice.actions;
 
 export const { selectTotalQuantity } = shoppingCartSlice.selectors;
 

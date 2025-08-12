@@ -9,7 +9,7 @@ import { useGetNowPlayingMovieQuery } from '@/src/service/query/rtkQuery';
 import AppBar from '@/src/components/base/appbar/AppBar';
 import styles from './home.style';
 import { useAppDispatch } from '@/src/store/store';
-import { addItem } from '@/src/features/shoppingCart/shoppingCartSlice';
+import { itemAdded } from '@/src/features/shoppingCart/shoppingCartSlice';
 
 const HomeScreen = () => {
   const { data = [], isFetching } = useGetNowPlayingMovieQuery();
@@ -35,7 +35,7 @@ const HomeScreen = () => {
                   style={styles.priceButton}
                   onPress={() => {
                     // Step 6: Dispatch Actions / Trigger Events ///////////////
-                    dispatch(addItem({ id: item.id }));
+                    dispatch(itemAdded({ id: item.id }));
                   }}
                 >
                   <Text style={styles.priceButtonText}>Add</Text>
