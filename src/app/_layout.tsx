@@ -14,7 +14,6 @@ import { dark, light } from '@/src/config/theme';
 import * as Font from '@expo-google-fonts/inter';
 import NetworkMonitor from '@/src/components/network-monitor/NetworkMonitor';
 import CentralLoading from '@/src/components/base/loading/CentralLoading';
-import AppSnackBar from '@/src/components/snack-bar/AppSnackBar';
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
@@ -50,7 +49,6 @@ export default function RootLayout() {
           </Stack>
           <NetworkMonitor />
           <CentralLoading />
-          <AppSnackBar />
         </I18nextProvider>
       </PaperProvider>
     </Provider>

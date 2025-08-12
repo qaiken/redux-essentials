@@ -13,6 +13,8 @@ const HomeScreen = () => {
     fetchNowPlayingMovie();
   }, []);
 
+  console.log(data, 'hi');
+
   if (isFetching) {
     return <ActivityIndicator />;
   }

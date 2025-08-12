@@ -1,5 +1,5 @@
 {
-  "name": "Rn BoilerPlate",
+  "name": "react-native-boilerplate",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -52,8 +52,7 @@
     "react-native-web": "^0.20.0",
     "react-native-webview": "13.13.5",
     "react-redux": "^9.2.0",
-    "use-latest-callback": "^0.2.3",
-    "zustand": "^5.0.4"
+    "use-latest-callback": "^0.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",

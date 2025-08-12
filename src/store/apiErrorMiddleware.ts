@@ -1,5 +1,4 @@
 import { isRejectedWithValue, Middleware } from '@reduxjs/toolkit';
-import { useApiErrorStore } from '@/src/zustand/apiErrorStore';
 
 interface ErrorResponse {
   status: number;
@@ -16,8 +15,9 @@ export const apiErrorMiddleware: Middleware = () => (next) => (action) => {
       error.data?.message ||
       error.data?.error ||
       'Something went wrong. Please try again.';
-    if (errorMessage !== 'Invalid token')
-      useApiErrorStore.getState().showError(errorMessage);
+    if (errorMessage !== 'Invalid token') {
+      // TODO: do something
+    }
   }
 
   return next(action);

@@ -6,7 +6,6 @@ import {
   SingInSignUpResponse,
 } from '@/src/types/ApiResponse';
 import axiosBaseQuery from '@/src/service/query/baseQuery';
-import { useAppStore } from '@/src/zustand/appStore';
 
 export const movieApi = createApi({
   reducerPath: 'home',
@@ -17,7 +16,7 @@ export const movieApi = createApi({
         url: 'auth/refresh',
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${useAppStore.getState()?.user?.refreshToken}`,
+          Authorization: 'Bearer Token',
           'Content-Type': 'application/json',
         },
       }),
