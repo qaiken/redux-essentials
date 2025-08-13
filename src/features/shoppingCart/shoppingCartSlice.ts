@@ -8,7 +8,7 @@ type ShoppingCartState = Record<string, { quantity: number }>;
 
 const initialState: ShoppingCartState = {};
 
-// Step 4: Setup a slice ///////////////////////////////
+// Step 1: Setup a slice ///////////////////////////////
 // Slices combine the concepts of state, reducers,
 // actions, action creators, and selectors into a single "feature"
 const shoppingCartSlice = createSlice({
@@ -27,7 +27,7 @@ const shoppingCartSlice = createSlice({
       }
     },
     // Reducer names (and actions) should typically be named past-tense
-    // because we're describing "an event that occurred in the application"
+    // because we're describing "an event that occurred in the application"w
     itemRemoved: (state, action: PayloadAction<CartItem>) => {
       const { id } = action.payload;
       delete state[id];

@@ -24,7 +24,7 @@ const logger: Middleware = (store) => (next) => (action: any) => {
 // Object containing the individual "slices"
 const rootReducer = combineSlices(movieApiSlice, shoppingCartSlice);
 
-// Step 1: Set Up the Redux Store ///////////////////////////////
+// Step 2: Set Up the Redux Store ///////////////////////////////
 const configureAppStore = () => {
   // only one store instance for the entire application
   const store = configureStore({
@@ -44,7 +44,7 @@ const configureAppStore = () => {
 
 const store = configureAppStore();
 
-// Step 2: Add TypeScript Helpers To:
+// Step 3: Add TypeScript Helpers To:
 // 1. Dispatch Actions ("Trigger Events")
 // 2. Select State ("Read State")
 //  ///////////////////////////////

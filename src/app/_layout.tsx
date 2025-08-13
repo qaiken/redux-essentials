@@ -9,7 +9,7 @@ import CartDrawer from '../features/shoppingCart/CartDrawer';
 
 export default function RootLayout() {
   return (
-    // Step 3: Provide the store to the entire application ///////////////////////////////
+    // Step 4: Provide the store to the entire application ///////////////////////////////
 
     // Uses React's Context API internally to make the Redux store
     // accessible to all of the React components in our application
