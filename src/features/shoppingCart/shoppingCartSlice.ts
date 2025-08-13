@@ -27,7 +27,7 @@ const shoppingCartSlice = createSlice({
       }
     },
     // Reducer names (and actions) should typically be named past-tense
-    // because we're describing "an event that occurred in the application"w
+    // because we're describing "an event that occurred in the application"
     itemRemoved: (state, action: PayloadAction<CartItem>) => {
       const { id } = action.payload;
       delete state[id];
